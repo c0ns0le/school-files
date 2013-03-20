@@ -1,0 +1,47 @@
+%
+% Nume: Duma Andrei Dorian
+% Grupa: 315CA
+%
+
+1.1 RGB to Gray
+
+    Am citit imaginea cu imread, am calculat imaginea în tonuri de gri
+    folosind formula dată, aplicând-o pe matrici, nu element cu element:
+
+        gray_img = floor( 0.2989 * img(:,:,1) + 0.5870 * img(:,:,2) \
+                        + 0.1140 * img(:,:,3) );
+
+    Am scris apoi matricea rezultată cu imwrite.
+
+1.2 Histogram
+
+    Pentru i=1:256, număr câte puncte au valoarea i-1, calculând
+    sum( sum( img == (i - 1) ) ) și păstrând valorile în vectorul rezultat.
+
+1.3 Brightness
+
+    Adun matricei img valoarea x folosindu-mă de funcțiile min și max
+    pentru a păstra valorile în intervalul [0:255]:
+
+        img = min(255, max(0, img + x));
+
+    Returnez apoi mean(mean(img)), noua luminozitate medie.
+
+2.  Salt & Pepper
+
+    Extrag coordonatele pixelilor stricați folosind find(), apoi, pentru
+    fiecare astfel de pixel, calculez media pixelilor adiacenți scăzând din
+    sum(sum(img(x-1:x+1,y-1:y+1,:))) valoarea în pixelul stricat și
+    împărțind la 8. Trunchiez apoi cu floor().
+
+3.  Captcha
+
+    Mai întâi creez și populez un hashtable un cheile sunt matrici în alb
+    și negru, iar valorile sunt literele corespunzătoare. Apoi transform
+    matricea citită în alb și negru. Urmează parcurgerea coloană cu
+    coloană de la stânga la dreapta pentru împărțirea în litere separate.
+    în funcția detect prelucrez în continuare litera extrasă, eliminând
+    liniile albe de deasupra și de dedesubt. Acum litera este pregătită de
+    comparația cu șabloanele date, comparație pentru care folosesc
+    hashtable-ul menționat anterior. Am ales să folosesc un hashtable din
+    motive de eficiență.
