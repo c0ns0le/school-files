@@ -1,3 +1,8 @@
+/*\
+ *   Duma Andrei Dorian
+ *   315 CA
+\*/
+
 #ifndef __POST_OFFICE_H
 #define __POST_OFFICE_H
 

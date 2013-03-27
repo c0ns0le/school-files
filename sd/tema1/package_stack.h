@@ -1,3 +1,8 @@
+/*\
+ *   Duma Andrei Dorian
+ *   315 CA
+\*/
+
 #ifndef __PACKAGE_STACK_H
 #define __PACKAGE_STACK_H
 

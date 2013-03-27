@@ -1,1 +1,23 @@
-TODO
+/*\
+ *   Duma Andrei Dorian
+ *   315 CA
+\*/
+
+Am abordat problema cât mai modular cu putință. La bază este structura Package,
+pe care o folosesc toate celelalte clase. Am creat o listă dublu-înlănțuită
+generică, PackageList, pe care am utilizat-o pentru a implementa PackageQueue
+și PackageStack.
+
+Clasa Window conține un PackageQueue, un PackageStack, precum și limitele
+specifice (weights, Q, K), toate fiind câmpuri private. Clasa Window expune
+funcții încă elementare, care sunt folosite apoi de clasa PostOffice.
+
+PostOffice se inițializează cu un singur argument, numărul maxim de ghișee.
+Alocă apoi (dinamic) un vector de Window*, având valorile inițiale NULL.
+Când se deschide un nou ghișeu, creează dinamic un ghișeu cu parametrii
+potriviți. Cu excepția unei funcții private next_open_window, care determină
+următorul ghișeu, toate funcțiile oferite de PostOffice sunt echivalentele
+directe ale comenzilor din fișierul de intrare.
+
+Am încercat să păstrez o separare cât mai clară între componente și să fac
+public doar strictul necesar.

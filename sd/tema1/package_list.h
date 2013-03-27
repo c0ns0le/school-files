@@ -1,3 +1,8 @@
+/*\
+ *   Duma Andrei Dorian
+ *   315 CA
+\*/
+
 #ifndef __LIST_H
 #define __LIST_H
 

@@ -1,3 +1,8 @@
+/*\
+ *   Duma Andrei Dorian
+ *   315 CA
+\*/
+
 #ifndef __WINDOW_H
 #define __WINDOW_H
 

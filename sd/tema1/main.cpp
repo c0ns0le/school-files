@@ -1,3 +1,8 @@
+/*\
+ *   Duma Andrei Dorian
+ *   315 CA
+\*/
+
 #include <stdio.h>
 #include <string.h>
 
