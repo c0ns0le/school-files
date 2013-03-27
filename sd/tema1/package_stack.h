@@ -27,5 +27,4 @@ class PackageStack {
         }
 };
 
-
 #endif

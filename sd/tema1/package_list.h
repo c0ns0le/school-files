@@ -20,6 +20,7 @@ class PackageList {
             first = last = NULL;
         }
 
+        // remove all elements to free the memory
         ~PackageList() {
             while (!isEmpty()) {
                 removeFirst();
@@ -77,6 +78,7 @@ class PackageList {
             return result;
         }
 
+        // return first element in the list
         Package front() {
             Package result;
             if (isEmpty()) {
@@ -87,6 +89,7 @@ class PackageList {
             return result;
         }
 
+        // return last element in the list
         Package rear() {
             Package result;
             if (isEmpty()) {
@@ -97,6 +100,7 @@ class PackageList {
             return result;
         }
 
+        // check whether the list is empty or not
         int isEmpty() {
             if (first == NULL) {
                 return 1;

@@ -13,6 +13,18 @@ class Window {
 
         PackageQueue queue;
         PackageStack stack;
+
+        // process one package at this window;
+        // if the weight is not acceptable, send package to window w
+        void process_one_package(Window &w) {
+            Package p = queue.dequeue();
+            if (p.package_weight >= weight_min && p.package_weight <= weight_max) {
+                send_to_stack(p);
+            } else {
+                w.send_to_queue(p);
+            }
+        }
+
     public:
         Window(int window_id, int weight_min, int weight_max, int Q, int K) {
             this->window_id = window_id;
@@ -45,28 +57,8 @@ class Window {
             K_ += p.package_weight;
         }
 
-        // adds a package to the queue                      TO REMOVE TODO!
-        void add_person(int personal_id, int package_weight) {
-            Package p;
-            p.personal_id = personal_id;
-            p.package_weight = package_weight;
-            send_to_queue(p);
-        }
-
-        // process one package at this window
-        // if weights are not acceptable, send package to window w
-        void process_one_package(Window &w) {
-            Package p = queue.dequeue();
-            if (p.package_weight >= weight_min && p.package_weight <= weight_max) {
-                send_to_stack(p);
-            } else {
-                w.send_to_queue(p);
-            }
-        }
-
-        // might be USELESS TODO
         // process n packages, sending unaccepted packages to window w
-        void process(int n, Window &w) {
+        void process(Window &w, int n) {
             int i;
             for (i=0; i<n; i++) {
                 process_one_package(w);
