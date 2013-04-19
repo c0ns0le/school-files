@@ -1,0 +1,60 @@
+%
+%  Duma Andrei Dorian
+%  Grupa 315CA
+%
+
+
+TASK 1
+======
+
+Am factorizat matricea A = QR.
+Sistemul devine Q*R*x = b. Prin înmulțire cu transpusa:
+    R*x = Q'*b ,  cu R superior triunghiulară;
+Folosesc apoi funcția (definită de mine) SST pentru a rezolva acest sistem.
+
+
+TASK 2
+======
+
+Folosesc algoritmul QR în varianta cea mai simplă.
+
+  -- QR = A
+  ^< A = RQ
+
+Condiția de convergență este ca norma-infinit a diferenței A(k+1) - A(k)
+    să devină mai mică decât un epsilon fixat.
+
+
+TASK 3
+======
+
+La plot, am folosit funcția interp1 cu tipul de interpolare „spline”.
+Pentru desenarea mai multor chenare, am utilizat funcția subplot.
+
+
+TASK 4
+======
+
+Am ales: p = 27 și n = 160.
+
+Compresie: 160 / (2*27) = 2.96, deci aproximativ 300%.
+
+Pentru rezolvarea sistemului cu matrice Toeplitz, am
+  folosit metoda Levinson-Durbin.
+
+Formatul comprimat arată în felul următor:
+-----------------------
+n p fs bps                % n - numărul de sample-uri din 20ms
+                          % p - număr coeficienți și valori inițiale
+                          % fs - sample rate
+                          % bps - bits per sample
+x1 x2 .. xp a1 a2 .. ap
+y1 y2 .. yp b1 b2 .. bp
+
+  ....                    % x y .. u - valori inițiale
+                          % a b .. h - coeficienți
+
+t1 t2 .. tp g1 g2 .. gp
+u1 .. uL h1 .. hL         % ultima linie poate avea L < p
+-----------------------
+
