@@ -28,21 +28,21 @@ Condiția de convergență este ca norma-infinit a diferenței A(k+1) - A(k)
 TASK 3
 ======
 
-La plot, am folosit funcția interp1 cu tipul de interpolare „spline”.
-Pentru desenarea mai multor chenare, am utilizat funcția subplot.
+La plot am folosit funcția interp1 cu tipul de interpolare „spline”.
+Pentru desenarea mai multor chenare am utilizat funcția subplot.
 
 
 TASK 4
 ======
 
-Am ales: p = 27 și n = 160.
+Am ales: p = 27 și n = 160. Aceste valori dau rezultate optime.
 
 Compresie: 160 / (2*27) = 2.96, deci aproximativ 300%.
 
-Pentru rezolvarea sistemului cu matrice Toeplitz, am
-  folosit metoda Levinson-Durbin.
+BONUS: Pentru rezolvarea sistemului cu matrice Toeplitz
+         am folosit metoda Levinson-Durbin.
 
-Formatul comprimat arată în felul următor:
+Formatul fișierului comprimat arată în felul următor:
 -----------------------
 n p fs bps                % n - numărul de sample-uri din 20ms
                           % p - număr coeficienți și valori inițiale
