@@ -13,7 +13,7 @@ Node::Node(int maxSize) {
 }
 
 Node::~Node() {
-    //delete this->vector;
+    delete[] this->vector;
 }
 
 bool Node::isEmpty() {

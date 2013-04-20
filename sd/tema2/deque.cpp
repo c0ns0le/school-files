@@ -12,22 +12,26 @@ Deque::Deque(int maxSize) {
 }
 
 Deque::~Deque() {
+    Node* p = first;
+    Node* next = NULL;
+
+    while (p != NULL) {
+        next = p->next;
+        delete p;
+        p = next;
+    }
 }
 
 void Deque::setMaxDays(int maxDays) {
-//printf("setMaxDays: %d %d %d --", day, this->maxDays, first->vector[0].date);
     this->maxDays = maxDays;
 
     popFront();
-//printf(" %d %d %d\n", day, this->maxDays, first->vector[0].date);
 }
 
 void Deque::dayPasses() {
-//printf("dayPasses: %d %d %d --", day, this->maxDays, first->vector[0].date);
     day += 1;
 
     popFront();
-//printf(" %d %d %d\n", day, this->maxDays, first->vector[0].date);
 }
 
 void Deque::pushFront(Visit v) {
@@ -45,6 +49,9 @@ void Deque::pushFront(Visit v) {
 }
 
 void Deque::pushBack(Visit v) {
+    /**
+     * Adaugă la la capătul "recent" al deque-ului
+     */
     Node *p = NULL;
     if (last == NULL) {
         last = new Node(this->maxSize);
@@ -62,35 +69,6 @@ void Deque::popFront() {
     /**
      * Elimină vizitele prea vechi.
      */
-/*
-    int oldestPossible = this->day - this->maxDays + 1;
-    Node* p = NULL;
-
-    while (first && first->vector[first->size - 1].date < oldestPossible) {
-        if (first->next == NULL) {
-            delete first;
-            first = last = NULL;
-            return;
-        }
-        p = first->next;
-        p->prev = NULL;
-        delete first;
-        first = p;
-    }
-
-    if (first == NULL) {
-        return;
-    }
-
-    int i;
-    for (i = 0; i < first->size; i++) {
-        if (first->vector[i].date >= oldestPossible) {
-            first->remove(i);
-            return;
-        }
-    }
-*/
-    /** AGAIN **/
     int expired = day - maxDays;
     Node* p = NULL;
 
@@ -112,37 +90,15 @@ void Deque::popFront() {
 
     int i = 0;
     while (first->vector[i].date <= expired) {
-//fprintf(stderr, "%d %d %d\n", i, first->size, maxSize);
         ++i;
     }
     first->remove(i);
 }
 
 void Deque::popBack(int time) {
-/*
-    int newestPossible = day - time;
-    Node* p = NULL;
-
-    while (last && last->vector[0].date > newestPossible) {
-        if (last->prev == NULL) {
-            delete last;
-            first = last = NULL;
-            return;
-        }
-        p = last->prev;
-        p->next = NULL;
-        delete last;
-        last = p;
-    }
-
-    int i;
-    for (i = last->size - 1; i >= 0; i--) {
-        if (last->vector[i].date <= newestPossible) {
-            last->size = i + 1;
-            return;
-        }
-    }
-*/
+    /**
+     * Elimină elementele cu vechimea cel mult @time
+     */
     int oldestToRemove = day - time + 1;
     Node* p = NULL;
 
@@ -175,34 +131,20 @@ void Deque::accessPage(char* url) {
 }
 
 Visit Deque::get(int n) {
-/*
-    Node* p = last;
-    if (p == NULL) {
-        fprintf(stderr, "NULL!\n");
-    }
-printf("size: %d n: %d diff: %d\n", p->size, n, p->size - n - 1);
-    while (p->prev && n >= p->size) {
-        n -= p->size;
-        p = p->prev;
-printf("size: %d n: %d diff: %d\n", p->size, n, p->size - n - 1);
-    }
-
-printf("size: %d n: %d diff: %d\n", p->size, n, p->size - n - 1);
-
-    return p->vector[p->size - n - 1];
-    */
+    /**
+     * Returnează al n-lea element,
+     *   numărând de la capătul "recent" al deque-ului
+     */
     Node* q = first;
     int total = 0;
     while (q != NULL) {
         total += q->size;
         q = q->next;
     }
-//printf("Sunt %d elemente in total!\n", total);
 
     Node* p = last;
 
     while (n >= p->size) {
-//printf("size: %d n: %d diff: %d\n", p->size, n, p->size - n - 1);
         n -= p->size;
         p = p->prev;
     }
@@ -211,6 +153,9 @@ printf("size: %d n: %d diff: %d\n", p->size, n, p->size - n - 1);
 }
 
 void Deque::erase(int n) {
+    /**
+     * Șterge al n-lea element, numărând de la capătul "recent" al deque-ului
+     */
     Node* p = last;
     while (p->prev && n >= p->size) {
         n -= p->size;
@@ -245,7 +190,6 @@ void Deque::show_history() {
     int i;
 
     printf("HISTORY:\nCurrent day: %d\n", day);
-    //printf("HISTORY:\nCurrent day: %d maxDays: %d oldest: %d\n", day, maxDays, first->vector[0].date);
     while (p != NULL) {
         for (i = p->size - 1; i >= 0; i--) {
             printf("%d %s\n", p->vector[i].date, p->vector[i].url);

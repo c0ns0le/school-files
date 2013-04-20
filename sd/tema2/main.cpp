@@ -20,10 +20,8 @@ int main() {
         } else if (strcmp(command, "SHOW_ENTRY") == 0) {
             scanf("%d", &n);
             printf("ENTRY %d:\n%d %s\n\n", n, d.get(n).date, d.get(n).url);
-fflush(stdout);
         } else if (strcmp(command, "SHOW_HISTORY") == 0) {
             d.show_history();
-fflush(stdout);
         } else if (strcmp(command, "CLEAR_RECENT_HISTORY") == 0) {
             scanf("%d", &n);
             d.popBack(n);
