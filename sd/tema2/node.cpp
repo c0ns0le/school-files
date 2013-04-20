@@ -58,11 +58,6 @@ void Node::remove(int n) {
         this->vector[i] = this->vector[i+n];
     }
     size -= n;
-
-    if (this->isEmpty()) {
-        this->prev->next = this->next;
-        this->next->prev = this->prev;
-    }
 }
 
 void Node::erase(int n) {
