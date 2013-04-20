@@ -3,15 +3,11 @@
 #include <stdlib.h>
 
 Visit::Visit() {
-    this->url = NULL;
-    this->date = 0;
+    this->url[0] = '\0';
+    this->date = -1;
 }
 
 Visit::Visit(char* url, int date) {
-    this->url = strdup(url);
+    strcpy(this->url, url);
     this->date = date;
-}
-    
-Visit::~Visit() {
-    //free(this->url);
 }

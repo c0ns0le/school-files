@@ -3,12 +3,11 @@
 
 class Visit {
     public:
-        char* url;
+        char url[100];
         int date;
 
         Visit();
         Visit(char* url, int date);
-        ~Visit();
 };
 
 #endif
