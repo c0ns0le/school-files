@@ -1,7 +1,7 @@
 function [l,X] = qrEig(A)
 % Calculează vectorii si valorile proprii ale matricii A
-    e = 0.1e-10;
-    maxiter = 1000;
+    e = 0.1e-16;
+    maxiter = 20000;
 
     i = 0;
     [n,n] = size(A);
