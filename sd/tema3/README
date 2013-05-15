@@ -1,0 +1,31 @@
+/**
+ *  Duma Andrei Dorian
+ *  315 CA
+ */
+
+Am abordat problema cât mai modular cu putință. Mă folosesc de
+următoarele clase:
+
+SiteNode, element al listei simplu-înlănțuite SiteList
+
+SiteList, parte componentă a WordEntry
+
+WordEntry, 'tipul' datelor din HashTable
+
+HashTable, un hashtable care reține intrările de tip "cuvânt",
+    cu site-urile asociate.
+
+Am utilizat scheletul de cod pus la dispoziție, aducându-i doar
+mici modificări.
+
+Aspecte interesante:
+
+  * dublarea dimensiunii hashtable-ului: am creat un nou hashtable
+    în care am redistribuit WordEntry-urile.
+
+  * intersecția a două liste de site-uri: m-am folosit de faptul
+    că erau sortate -> complexitate O(L1+L2), unde L1 și L2 sunt
+    lungimile listelor.
+
+  * am observat că char* este semnificativ mai rapid decât std::string.
+    Mai greu de utilizat, dar notabil mai rapid.
