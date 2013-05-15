@@ -1,0 +1,70 @@
+%
+%  Duma Andrei Dorian
+%  315 CA
+%
+
+I. Generarea punctelor în mod aleator și uniform
+
+    Am împărțit dreptunghiul în m*n pătrățele, astfel încât latura mai mică
+    a dreptunghiului în care generez să fie perfect „acoperită”.
+    Va rămâne un exces la unul din „capetele” dreptunghiului, pe care îl
+    împart în atâtea dreptunghiuri câte puncte mai sunt de distribuit: N-m*n.
+
+    Utilizând această metodă, mă asigur că nu se produc aglomerări, cea mai
+    mare zonă neacoperită posibilă fiind un pătrat cu latura 2*latura
+    pătratelor „elementare”.
+
+    Mai multe detalii reies din comentariile prezente în cod.
+
+II. Aria unei suprafețe închise
+
+    1) Integrare prin metoda trapezelor
+
+        Integrala este:
+
+        I = Sumă( (x(i+1)-x(i)) * (y(i)+y(i+1)) / 2 )
+
+        Reducând termenii, integrala devine:
+
+        I = Sumă( x(i+1)*y(i) - x(i)*y(i+1) )
+
+        Am vectorizat operațiile, introducând vectorii rotiți _y și y_ și
+        înmulțind vectorii element cu element (.*).
+
+        Mai multe detalii în codul sursă.
+
+    2) Integrare prin metoda Monte-Carlo
+
+        Determin dreptunghiul de dimensiuni minime care conține curba a
+        cărei arie trebuie calculată, apoi generez puncte aleatoare în
+        acest dreptunghi folosind funcția Gen2DPoints definită la I.
+
+        Număr apoi punctele din interior și aflu aria făcând raportul cu
+        numărul total de puncte și înmulțind cu aria dreptunghiului.
+
+        Pentru a determina dacă un punct este în interiorul unui poligon
+        am definit funcția isinside.
+
+        Mai multe detalii în codul sursă.
+
+III. Calculul volumului inimii
+
+    Inima dată prin secțiuni este formată din mai multe „trunchiuri”,
+    volumul fiecăruia dintre ele putând fi determinat cunoscând înălțimea
+    și ariile bazelor. Ariile le calculez atât prin cu funcția Trapez,
+    cât și cu MonteCarlo. Înălțimile sunt practic diff(z), unde z este
+    vectorul coordonatelor z ale secțiunilor.
+
+    Volumul unui trunchi este:
+
+    V(i) = h(i) / 3 * (A(i) + A(i+1) + sqrt(A(i)*A(i+1)))
+
+    Volumul total:
+
+    V = Sumă(V(i))
+
+    Din nou se poate vectoriza pentru eficiență. Detalii în codul sursă.
+
+IV. Păreri
+
+    A fost cea mai interesantă și plăcut de rezolvat temă a acestui curs.
