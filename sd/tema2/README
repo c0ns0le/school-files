@@ -1,0 +1,28 @@
+/**
+  *  Duma Andrei Dorian
+  *   315 CA
+ **/
+
+Am rezolvat problema într-o manieră modulară, grupând funcționalitatea
+în clase și funcții separate.
+
+Am clasele:
+
+   Visit - cu câmpurile url și date
+     |
+     +-> molecula elementară a ceea ce urmează
+
+   Node - care conține un vector de Visit-uri și pointeri către
+     |        nodurile anterior și următor.
+     +--> pune la dispoziție câteva funcții de adăugare în față,
+            la coadă, de ștergere etc.
+
+   Deque - o listă dublu înlănțuită de Node-uri
+     |
+     +---> expune funcții echivalente cu comenzile de la input
+
+Notă: Valgrind este genial. M-a scăpat de un număr impresionant
+        de erori la eliberarea memoriei (400+, la un moment dat).
+
+Notă 2: detalii suplimentare despre funcții sunt prezente în cod,
+        după antetul fiecărei funcții.

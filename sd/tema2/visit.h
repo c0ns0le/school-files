@@ -1,3 +1,8 @@
+/**
+  *    Duma Andrei Dorian
+  *    315 CA
+  */
+
 #ifndef __VISIT_H
 #define __VISIT_H
 

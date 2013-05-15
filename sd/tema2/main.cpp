@@ -1,7 +1,11 @@
+/**
+  *    Duma Andrei Dorian
+  *    315 CA
+  */
+
 #include <stdio.h>
 #include <string.h>
 #include "deque.h"
-#include "visit.h"
 
 int main() {
     int maxSize;

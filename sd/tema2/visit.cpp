@@ -1,6 +1,10 @@
+/**
+  *    Duma Andrei Dorian
+  *    315 CA
+  */
+
 #include "visit.h"
 #include <string.h>
-#include <stdlib.h>
 
 Visit::Visit() {
     this->url[0] = '\0';

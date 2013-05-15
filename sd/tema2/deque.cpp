@@ -1,5 +1,9 @@
+/**
+  *    Duma Andrei Dorian
+  *    315 CA
+  */
+
 #include <stdio.h>
-#include "visit.h"
 #include "deque.h"
 
 Deque::Deque(int maxSize) {

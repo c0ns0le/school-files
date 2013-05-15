@@ -1,12 +1,17 @@
+/**
+  *    Duma Andrei Dorian
+  *    315 CA
+  */
+
 #ifndef __DEQUE_H
 #define __DEQUE_H
 
 #include "node.h"
 
-/**
+/** SCHEMĂ
  * FRONT ============= BACK
  * pushFront           pushBack
- * popFront
+ * popFront            popBack
  */
 
 class Deque {
