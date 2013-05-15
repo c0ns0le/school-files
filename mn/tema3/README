@@ -1,0 +1,33 @@
+%
+%  Duma Andrei-Dorian
+%   315 CA
+%
+
+Analiza metodelor de interpolare
+--------------------------------
+
+Valorile epsilon pentru testarea convergenței: 0.3, 0.1, 0.05, 0.025
+Valorile numerelor punctelor din suportul de interpolare: 10, 20, 30, 40, 50, 100, 150, 200, 250, 300
+
+Tabelul următor descrie convergența diverselor metode pentru diferite valori ale epsilon-ului:
+
+      +-------+---------+---------+---------+---------------------------------------+
+      |eps\tip| SplineL | SplineN | SplineT |  Trig  |     Cea mai rapidă metodă    |
+      +-------+---------+---------+---------+---------------------------------------+
+      |   0.3 |   100   |    40   |    40   |    50  |       SplineN & SplineT      |
+      |   0.1 |   100   |    50   |   100   |   100  |            SplineN           |
+      |  0.05 |   150   |   100   |   100   |   150  |       SplineN & SplineT      |
+      | 0.025 |   200   |   100   |   100   |   200  |       SplineN & SplineT      |
+      +-------+---------+---------+---------+---------------------------------------+
+
+Se observă că per total SplineN converge cel mai rapid la spline-ul "ideal".
+
+Observații:
+
+  Funcția Error calculează eroare pentru un anumit nsi și pentru o anumită funcție,
+    dată ca parametru sub forma unui string.
+
+  Funcția nsiConv calculează nsi-ul de convergență al unei funcții date ca parametru
+    sub formă de string, pentru un anumit epsilon (dat tot ca parametru).
+
+Mai multe detalii se pot afla din comentariile din fișierele sursă: sunt destul de clare.
